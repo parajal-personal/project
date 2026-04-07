@@ -1,0 +1,36 @@
+Mesh.Algorithm = 6; 
+Mesh.ElementOrder = 2; // Second-order elements
+
+Mesh.MshFileVersion = 2.2;
+
+// Create domain vertices
+ 
+Point(1) = {ox_in, 0.0, 0.0, dx_inlet};
+Point(2) = {ox_in+lx_in, 0.0, 0.0, dx_inlet};
+Point(3) = {ox_in+lx_in, ly_in, 0.0, dx_inlet};
+Point(4) = {ox_in, ly_in, 0.0, dx_inlet};
+
+For i In {1:4}
+  Physical Point(i) = {i};
+EndFor
+
+Line(1) = {1, 2};
+Line(2) = {2, 3};
+Line(3) = {3, 4};
+Line(4) = {4, 1};
+
+For i In {1:4}
+  Physical Line(i) = {i};
+EndFor
+
+// Create outer boundary
+
+lin_loop[0] = newll;
+Line Loop(lin_loop[0]) = {1, 2, 3,4};
+
+Periodic Line {2} = {-4};
+
+// Create surface mesh  
+Plane Surface(1) = {lin_loop[0]};
+ 
+Physical Surface(1) = {1};

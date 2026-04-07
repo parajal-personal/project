@@ -1,0 +1,14 @@
+&comppar
+eta_s        = 1.0
+U_avg        = 0.5
+deltat       = 0.5
+numtimesteps = 1000
+dx_box       = 0.1
+dx_wall      = 0.02
+dx_inlet     = 0.1
+L2 =10.0
+vtkevery = 1
+gammac = 1.0
+surfimplct = 1
+coorsys = 1
+/
