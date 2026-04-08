@@ -225,7 +225,7 @@ program extrudate_swell2d_stokes
 
   coefficients_st%i = coefficients%i
   coefficients_st%r = 0._dp
-  coefficients_st%r(1) = max(deltat, 1.0/gammac)
+  coefficients_st%r(1) = max(deltat, eta_s/(gammac * dx_wall))
   coefficients_st%r(2) = gammac
   coefficients_st%i(11) = 0
   coefficients_st%i(12) = surfimplct
